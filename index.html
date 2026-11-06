@@ -1470,6 +1470,113 @@
  .toybox-theme .guide-family-info p{font-size:14px}
 }
 
+
+/* v0.4.16: conditional, knowledge-safe score comparison in the notebook. */
+.toybox-theme .known-rule-conflicts{margin:0 0 16px;display:grid;gap:11px;padding:14px;border:1.5px solid #d5c9df;border-radius:16px;background:#f9f6fb;min-width:0}
+.toybox-theme .known-rule-conflicts-title{display:flex;align-items:flex-start;gap:10px;color:#665573}
+.toybox-theme .known-rule-conflicts-title>span{display:grid;place-items:center;flex:none;width:38px;height:38px;background:#ebe2ef;border-radius:10px;font-size:22px}
+.toybox-theme .known-rule-conflicts-title strong{display:block;font-size:16px;line-height:1.5;color:#584767}
+.toybox-theme .known-rule-conflicts-title p{margin:2px 0 0;font-size:14px;line-height:1.6;color:#675f6b}
+.toybox-theme .rule-conflict-card{display:grid;gap:10px;background:#fffdfa;border:1px solid #e4d9e6;border-radius:13px;padding:12px;min-width:0}
+.toybox-theme .rule-conflict-head{display:flex;gap:9px;align-items:center;min-width:0}
+.toybox-theme .rule-conflict-head>.item-art{width:40px;height:40px;max-width:none;flex:none}
+.toybox-theme .rule-conflict-head strong{display:block;color:#514752;font-size:16px;line-height:1.45}
+.toybox-theme .rule-conflict-head span{display:block;color:#706776;font-size:13px;line-height:1.5;margin-top:2px}
+.toybox-theme .rule-conflict-conditions{display:flex;flex-wrap:wrap;gap:7px}
+.toybox-theme .rule-conflict-conditions>span{background:#f5eff5;border:1px solid #e6d9e3;padding:6px 9px;border-radius:9px;color:#5e535f;font-size:13px;line-height:1.5}
+.toybox-theme .rule-conflict-conditions strong{color:#76547b}
+.toybox-theme .rule-conflict-cells{display:grid;grid-template-columns:repeat(auto-fit,minmax(75px,1fr));gap:6px;min-width:0}
+.toybox-theme .rule-conflict-cell{border:1px solid #e1d7d9;border-radius:10px;padding:9px 4px;text-align:center;min-width:0;background:#f9f5f1;display:grid;gap:2px;align-content:start}
+.toybox-theme .rule-conflict-cell>span{font-size:13px;color:#675e66;font-weight:700}
+.toybox-theme .rule-conflict-cell>strong{font-size:18px;color:#6c5869;line-height:1.4}
+.toybox-theme .rule-conflict-cell.no-points>strong{color:#9b6a67}
+.toybox-theme .rule-conflict-cell.has-points{background:#f0f6ec;border-color:#c9ddca}
+.toybox-theme .rule-conflict-cell.has-points>strong{color:#487357}
+.toybox-theme .rule-conflict-cell.is-current{outline:2px solid #8c7096;outline-offset:-2px}
+.toybox-theme .rule-conflict-cell small{font-size:12px;font-weight:800;color:#684f7c}
+.toybox-theme .rule-conflict-current{margin:0;font-size:14px;line-height:1.65;color:#574e58}
+.toybox-theme .rule-conflict-current strong{color:#4a715a;font-size:15px}
+.toybox-theme .rule-conflict-caution{margin:0;font-size:13px;line-height:1.7;color:#7a5f58}
+.toybox-theme .known-rule-conflicts-foot{font-size:13px;line-height:1.75;color:#6d6372;margin:0}
+@media(max-width:700px){
+ .toybox-theme .known-rule-conflicts{padding:11px;gap:10px}
+ .toybox-theme .rule-conflict-card{padding:10px}
+ .toybox-theme .rule-conflict-cells{grid-template-columns:repeat(auto-fit,minmax(62px,1fr))}
+ .toybox-theme .rule-conflict-cell>strong{font-size:17px}
+}
+
+
+/* v0.4.18: Two supported known-secret comparisons are optional, never auto-opened.
+   Keep native <details> behavior for touch, keyboard, and screen readers. */
+.toybox-theme details.known-rule-conflicts{
+  display:block; padding:0; overflow:hidden; margin:14px 0 16px;
+  background:#f9f6fb; border:1.5px solid #d5c9df; border-radius:16px;
+}
+.toybox-theme .known-rule-conflicts-title{
+  display:flex; align-items:center; cursor:pointer; gap:10px; min-height:66px;
+  padding:12px 14px; list-style:none;
+}
+.toybox-theme .known-rule-conflicts-title::-webkit-details-marker{display:none}
+.toybox-theme .known-rule-conflicts-title::marker{content:""}
+.toybox-theme .known-rule-conflicts-title:hover{background:#f3edf7}
+.toybox-theme .known-rule-conflicts-title:focus-visible{outline:3px solid #9877aa;outline-offset:-4px}
+.toybox-theme .known-rule-conflicts-title>div{flex:1;min-width:0}
+.toybox-theme .known-rule-conflicts-title strong{font-size:16px}
+.toybox-theme .known-rule-conflicts-title p{font-size:13px}
+.toybox-theme .rule-conflict-chevron{
+  flex:none; width:12px; height:12px; border-right:2px solid #786381;
+  border-bottom:2px solid #786381; transform:rotate(45deg); margin:0 5px 6px 3px;
+  transition:transform .18s ease;
+}
+.toybox-theme .known-rule-conflicts[open] .rule-conflict-chevron{transform:rotate(225deg);margin-bottom:-4px}
+.toybox-theme .known-rule-conflicts-body{
+  display:grid; gap:11px; border-top:1px solid #e2d9e7; padding:13px 14px 14px;
+}
+.toybox-theme .known-rule-conflicts-intro{margin:0;color:#645969;font-size:14px;line-height:1.65}
+@media(max-width:700px){
+  .toybox-theme details.known-rule-conflicts{padding:0}
+  .toybox-theme .known-rule-conflicts-title{padding:11px;min-height:68px}
+  .toybox-theme .known-rule-conflicts-title strong{font-size:15px}
+  .toybox-theme .known-rule-conflicts-title p{font-size:12px;line-height:1.55}
+  .toybox-theme .known-rule-conflicts-body{padding:12px 10px;gap:10px}
+}
+@media(prefers-reduced-motion:reduce){.toybox-theme .rule-conflict-chevron{transition:none}}
+
+/* Chevron must not inherit the large icon tile styling from summary > span. */
+.toybox-theme .known-rule-conflicts-title>span.rule-conflict-chevron{
+  display:block;place-items:initial;width:10px;height:10px;border-radius:0;
+  background:transparent;padding:0;box-shadow:none;
+  border-right:2px solid #786381;border-bottom:2px solid #786381;
+  transform:rotate(45deg);margin:0 6px 5px 4px;
+}
+.toybox-theme .known-rule-conflicts[open] .known-rule-conflicts-title>span.rule-conflict-chevron{
+  transform:rotate(225deg);margin-bottom:-3px;
+}
+
+/* A clear, simple chevron on narrow phones. */
+.toybox-theme .known-rule-conflicts-title>span.rule-conflict-chevron{
+  width:22px;height:26px;display:grid;place-items:center;
+  border:0;background:transparent;color:#786381;
+  font-family:system-ui,sans-serif;font-size:27px;font-weight:700;line-height:1;
+  transform:none;margin:0 0 5px 0;transition:transform .18s ease;
+}
+.toybox-theme .known-rule-conflicts[open] .known-rule-conflicts-title>span.rule-conflict-chevron{
+  transform:rotate(180deg);margin:0 0 5px 0;
+}
+
+/* Clear plus/minus affordance for optional help, matching other folded panels. */
+.toybox-theme .known-rule-conflicts-title>span.rule-conflict-chevron{
+  width:32px;height:32px;min-width:32px;display:grid;place-items:center;
+  background:#eee5f1;border-radius:10px;border:0;
+  margin:0;color:#786381;font-size:21px;font-weight:800;
+  transform:none!important;transition:none;
+}
+.toybox-theme .known-rule-conflicts-title>span.rule-conflict-chevron::before{content:"＋"}
+.toybox-theme .known-rule-conflicts[open] .known-rule-conflicts-title>span.rule-conflict-chevron{
+  transform:none!important;margin:0;
+}
+.toybox-theme .known-rule-conflicts[open] .known-rule-conflicts-title>span.rule-conflict-chevron::before{content:"−"}
+
 </style>
   <script defer>
 (() => {
@@ -2747,8 +2854,51 @@ function findRumorItem(itemIndex){
  if(!Number.isInteger(itemIndex)||itemIndex<0||itemIndex>=ITEMS.length)return;
  ui.findItem=String(itemIndex);ui.tab='market';render();scrollToAnchor('#stock-finder-title');
 }
+// v0.4.17: Compare ONLY secrets confirmed by the player. The two kinds
+// supported here are exact + threshold and exact + same-item set. No guessing
+// from unconfirmed rule objects, NPC knowledge, or hints.
+function confirmedExactRuleComparisons(){
+ const known=new Set(getPlayer().known),found=[];
+ const exacts=state.rules.filter(r=>known.has(r.id)&&r.type==='exact');
+ const counterparts=state.rules.filter(r=>known.has(r.id)&&['triple','pair'].includes(r.type));
+ for(const exact of exacts){
+  for(const other of counterparts){
+   if(exact.item!==other.item)continue;
+   if(other.type==='triple'&&exact.target>=(other.threshold||3))continue;
+   found.push({exact,other,item:exact.item});
+  }
+ }
+ return found;
+}
+function renderKnownRuleConflicts(){
+ const pairs=confirmedExactRuleComparisons();
+ if(!pairs.length)return '';
+ const inventory=getPlayer().items;
+ const cards=pairs.map(({exact,other,item})=>{
+  const isSet=other.type==='pair';
+  const size=other.groupSize||2,cap=other.cap||3;
+  const counts=isSet
+   ? [...new Set([Math.max(0,exact.target-1),exact.target,exact.target+1,size,size*2,inventory[item]])].sort((a,b)=>a-b)
+   : [...new Set([exact.target,exact.target+1,other.threshold||3])].sort((a,b)=>a-b);
+  const cells=counts.map(n=>{
+   const hypothetical=inventory.slice();hypothetical[item]=n;
+   const points=actualRuleValue(exact,hypothetical,state.players)+actualRuleValue(other,hypothetical,state.players);
+   const selected=n===inventory[item];
+   return `<div class="rule-conflict-cell ${points?'has-points':'no-points'} ${selected?'is-current':''}"><span>${n}個</span><strong>＋${points}点</strong>${selected?'<small>現在</small>':''}</div>`;
+  }).join('');
+  const currentValue=actualRuleValue(exact,inventory,state.players)+actualRuleValue(other,inventory,state.players);
+  const condition=isSet
+   ? `${size}個ごとに<strong>＋${other.bonus}点</strong>（最大${cap}組）`
+   : `${other.threshold||3}個以上で<strong>＋${other.bonus}点</strong>`;
+  const guidance=isSet
+   ? '「ぴったり」は1個増えると加点が消えます。同種セットは必要数ごとに増えるため、両方の点数を見比べましょう。'
+   : '途中で一度得点が下がる場合があります。残りターンと交換条件を見て、どちらを狙うか判断しましょう。';
+  return `<article class="rule-conflict-card" aria-label="確認済みルール${escapeHtml(exact.id)}と${escapeHtml(other.id)}の比較"><div class="rule-conflict-head">${itemArt(item)}<div><strong>${escapeHtml(ITEMS[item].name)}の集め方を比べる</strong><span>ルール ${escapeHtml(exact.id)} と ${escapeHtml(other.id)}（両方確認済み）</span></div></div><div class="rule-conflict-conditions"><span>ちょうど${exact.target}個で<strong>＋${exact.bonus}点</strong></span><span>${condition}</span></div><div class="rule-conflict-cells" role="group" aria-label="所持数別の追加点">${cells}</div><p class="rule-conflict-current">現在：${inventory[item]}個 ／ この2つのルールによる追加点：<strong>＋${currentValue}点</strong></p><p class="rule-conflict-caution">${guidance}</p></article>`;
+ }).join('');
+ return `<details class="known-rule-conflicts" aria-label="確認済みの秘密のヒント"><summary class="known-rule-conflicts-title"><span aria-hidden="true">⚖</span><div><strong>集め方のヒントを見る</strong><p>比較は必要なときだけ（0ターン）</p></div><span class="rule-conflict-chevron" aria-hidden="true"></span></summary><div class="known-rule-conflicts-body"><p class="known-rule-conflicts-intro">同じ品物に、異なる集め方の条件があります。</p>${cards}<p class="known-rule-conflicts-foot">この比較は確認済みの2ルールによる追加点だけです。基本点やほかの秘密は含みません。どの品物を集めるかは自分で考えて決められます。</p></div></details>`;
+}
 function renderNotebook(){const known=new Set(getPlayer().known);const reactions=state.tradeReactions||[];
- $('#notebook-content').innerHTML=`<nav class="notebook-shortcuts" aria-label="手帳の内容へ移動"><a href="#notebook-rules">秘密ルール</a><a href="#notebook-rumors">噂を探す</a><a href="#notebook-memo">推理メモ</a></nav><div class="notebook-overview" aria-label="手帳の情報量"><div><span>確認済みの秘密</span><strong>${known.size} <small>/ 6件</small></strong></div><div><span>記録した噂</span><strong>${(state.rumors||[]).length} <small>件</small></strong></div><div><span>商人のひとこと</span><strong>${reactions.length} <small>件</small></strong></div></div><div class="notebook-layout"><section id="notebook-rules" class="paper-panel"><div class="panel-heading"><div class="eyebrow">SCORING RULES</div><h3>6つの秘密ルール</h3></div><div class="rule-list">${state.rules.map((r,i)=>`<div class="rule-card"><div class="rule-header"><span class="rule-tag ${known.has(r.id)?'':'locked'}">${known.has(r.id)?'確認済み':'未確認'}</span><span>ルール ${r.id} · ${publicRuleCategory(r.id)}</span></div><p>${known.has(r.id)?itemEmojiText(ruleText(r)):'このルールの詳しい内容は、まだわかりません。'}</p>${known.has(r.id)?renderFocusedRuleProgress(r):''}</div>`).join('')}</div><p class="memo-note">基本得点は品物1個につき1点。知らないルールも、最後の得点計算では適用されます。</p></section><div><section id="notebook-rumors" class="paper-panel"><div class="panel-heading"><div class="eyebrow">RUMORS</div><h3>聞いた噂</h3></div><div class="rumor-filter" aria-label="噂の絞り込み"><label for="rumor-filter">表示する噂</label><select id="rumor-filter"><option value="all" ${ui.rumorFilter==='all'?'selected':''}>すべての噂（${rumorFilterCounts().all}分類）</option><option value="unknown" ${ui.rumorFilter==='unknown'?'selected':''}>まだ知らないルール（${rumorFilterCounts().unknown}分類）</option><option value="conflict" ${ui.rumorFilter==='conflict'?'selected':''}>証言が食い違うもの（${rumorFilterCounts().conflict}分類）</option></select></div><div class="rumor-ledger" id="rumor-ledger-list">${renderRumorLedger()}</div><p class="memo-note">噂は1ターンで2件聞けます。同じルールの証言をまとめて比較できますが、正しいとは限らず、確定ルールとしての交換には使えません。</p></section><section class="paper-panel" style="margin-top:14px"><div class="panel-heading"><div class="eyebrow">MERCHANTS' WORDS</div><h3>商人のひとこと</h3></div><div class="reaction-filter"><label for="reaction-filter">商人で絞り込む</label><select id="reaction-filter"><option value="all" ${ui.reactionFilter==='all'?'selected':''}>すべての商人</option>${NPCS.map(v=>`<option value="${v.name}" ${ui.reactionFilter===v.name?'selected':''}>${v.name}</option>`).join('')}</select></div><div class="notebook-rumors">${reactions.filter(r=>ui.reactionFilter==='all'||r.name===ui.reactionFilter).length?reactions.filter(r=>ui.reactionFilter==='all'||r.name===ui.reactionFilter).map(r=>`<div class="note-rumor"><span class="turn-badge">第${r.turn}ターン · ${escapeHtml(r.name)}</span><p>「${itemEmojiText(r.text)}」</p></div>`).join(''):'<div class="empty-box">選択した商人の発言は、まだ記録されていません。</div>'}</div><p class="memo-note">商人が口にした感想です。得点ルールの証拠とは限りません。</p></section><section id="notebook-memo" class="paper-panel" style="margin-top:14px"><div class="panel-heading"><div class="eyebrow">PRIVATE MEMO</div><h3>自分の推理メモ</h3></div><textarea id="player-memo" class="memo" placeholder="例：ルウは青い貝殻を欲しがっていた。何か秘密があるかも……">${escapeHtml(state.memo||'')}</textarea><p class="memo-note">自由に記入できます。自動保存され、ターンは消費しません。</p></section></div></div>`;
+ $('#notebook-content').innerHTML=`<nav class="notebook-shortcuts" aria-label="手帳の内容へ移動"><a href="#notebook-rules">秘密ルール</a><a href="#notebook-rumors">噂を探す</a><a href="#notebook-memo">推理メモ</a></nav><div class="notebook-overview" aria-label="手帳の情報量"><div><span>確認済みの秘密</span><strong>${known.size} <small>/ 6件</small></strong></div><div><span>記録した噂</span><strong>${(state.rumors||[]).length} <small>件</small></strong></div><div><span>商人のひとこと</span><strong>${reactions.length} <small>件</small></strong></div></div><div class="notebook-layout"><section id="notebook-rules" class="paper-panel"><div class="panel-heading"><div class="eyebrow">SCORING RULES</div><h3>6つの秘密ルール</h3></div><div class="rule-list">${state.rules.map((r,i)=>`<div class="rule-card"><div class="rule-header"><span class="rule-tag ${known.has(r.id)?'':'locked'}">${known.has(r.id)?'確認済み':'未確認'}</span><span>ルール ${r.id} · ${publicRuleCategory(r.id)}</span></div><p>${known.has(r.id)?itemEmojiText(ruleText(r)):'このルールの詳しい内容は、まだわかりません。'}</p>${known.has(r.id)?renderFocusedRuleProgress(r):''}</div>`).join('')}</div>${renderKnownRuleConflicts()}<p class="memo-note">基本得点は品物1個につき1点。知らないルールも、最後の得点計算では適用されます。</p></section><div><section id="notebook-rumors" class="paper-panel"><div class="panel-heading"><div class="eyebrow">RUMORS</div><h3>聞いた噂</h3></div><div class="rumor-filter" aria-label="噂の絞り込み"><label for="rumor-filter">表示する噂</label><select id="rumor-filter"><option value="all" ${ui.rumorFilter==='all'?'selected':''}>すべての噂（${rumorFilterCounts().all}分類）</option><option value="unknown" ${ui.rumorFilter==='unknown'?'selected':''}>まだ知らないルール（${rumorFilterCounts().unknown}分類）</option><option value="conflict" ${ui.rumorFilter==='conflict'?'selected':''}>証言が食い違うもの（${rumorFilterCounts().conflict}分類）</option></select></div><div class="rumor-ledger" id="rumor-ledger-list">${renderRumorLedger()}</div><p class="memo-note">噂は1ターンで2件聞けます。同じルールの証言をまとめて比較できますが、正しいとは限らず、確定ルールとしての交換には使えません。</p></section><section class="paper-panel" style="margin-top:14px"><div class="panel-heading"><div class="eyebrow">MERCHANTS' WORDS</div><h3>商人のひとこと</h3></div><div class="reaction-filter"><label for="reaction-filter">商人で絞り込む</label><select id="reaction-filter"><option value="all" ${ui.reactionFilter==='all'?'selected':''}>すべての商人</option>${NPCS.map(v=>`<option value="${v.name}" ${ui.reactionFilter===v.name?'selected':''}>${v.name}</option>`).join('')}</select></div><div class="notebook-rumors">${reactions.filter(r=>ui.reactionFilter==='all'||r.name===ui.reactionFilter).length?reactions.filter(r=>ui.reactionFilter==='all'||r.name===ui.reactionFilter).map(r=>`<div class="note-rumor"><span class="turn-badge">第${r.turn}ターン · ${escapeHtml(r.name)}</span><p>「${itemEmojiText(r.text)}」</p></div>`).join(''):'<div class="empty-box">選択した商人の発言は、まだ記録されていません。</div>'}</div><p class="memo-note">商人が口にした感想です。得点ルールの証拠とは限りません。</p></section><section id="notebook-memo" class="paper-panel" style="margin-top:14px"><div class="panel-heading"><div class="eyebrow">PRIVATE MEMO</div><h3>自分の推理メモ</h3></div><textarea id="player-memo" class="memo" placeholder="例：ルウは青い貝殻を欲しがっていた。何か秘密があるかも……">${escapeHtml(state.memo||'')}</textarea><p class="memo-note">自由に記入できます。自動保存され、ターンは消費しません。</p></section></div></div>`;
 }
 function renderLogs(){$('#log-content').innerHTML=`${renderStoryLog()}<div class="log-overview" aria-label="これまでの出来事"><span>第${state.turn}ターン終了 / 全${MAX_TURNS}ターン</span><strong>取引成立 ${state.successes}件</strong><small>閲覧・記録の確認は0ターンです</small></div>${renderChronicle()}<section class="paper-panel"><div class="panel-heading"><div class="eyebrow">YOUR MARKET HISTORY</div><h3>今日の出来事</h3></div><div class="log-list">${state.logs.map(l=>`<div class="log-entry"><span class="log-turn">${l.turn} T</span><span>${itemEmojiText(l.text)}</span></div>`).join('')}</div></section>`;}
 function activeIncomingCount(){
